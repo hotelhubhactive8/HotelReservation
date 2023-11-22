@@ -28,7 +28,9 @@ const Cities = () => {
   return (
     <View>
       <Text style={styles.title}>Indonesian Cities</Text>
-      <View>{renderCities()}</View>
+      <View style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+        {renderCities()}
+      </View>
     </View>
   );
 };

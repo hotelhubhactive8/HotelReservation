@@ -9,13 +9,93 @@ import COLOR from './../../constants/Colors';
 const Popular = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const home = useSelector((state) => state.home);
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const home = useSelector((state) => state.home);
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     dispatch(getHome());
   }, [dispatch]);
+
+  const handleOpenModal = () => {
+    setOpenModal(!openModal);
+  };
+
+  const handleFavoriteToggle = (item) => {
+    if (home.favorites.find((favorite) => favorite.id === item.id)) {
+      dispatch(removeFromFavorites(item.id));
+      console.log('ini hapus', item.id);
+    } else {
+      dispatch(addToFavorites(item));
+      console.log('ini tambah', item);
+    }
+  };
+
+  const renderProperty = (item, index) => (
+    <TouchableOpacity
+      key={index}
+      onPress={() => {
+        console.log(item.id);
+        router.push({
+          pathname: `details/${item.id}`,
+          params: item.id,
+        });
+      }}
+      style={styles.card}
+    >
+      <View style={{ borderRadius: 20 }}>
+        <Image
+          source={{ uri: item.propertyImage.image.url }}
+          style={{ width: 'auto', height: 120, borderRadius: 10 }}
+        />
+      </View>
+      <View
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          margin: 10,
+        }}
+      >
+        <View
+          style={{
+            flex: 2,
+            flexDirection: 'row',
+            gap: 4,
+            alignItems: 'center',
+          }}
+        >
+          <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>{item.name}</Text>
+          <Text
+            style={{
+              fontSize: 14,
+              alignItems: 'center',
+            }}
+          >
+            <MaterialCommunityIcons name="star" color={COLOR.secondary} size={16} />
+            <Text style={{ color: '#F8F0E5' }}>{item.reviews.score}</Text>
+          </Text>
+        </View>
+        <View
+          style={{
+            flex: 2,
+            alignItems: 'flex-end',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+            gap: 5,
+          }}
+        >
+          <Text style={{ fontSize: 16, color: 'white' }}>{item.price.lead.formatted}</Text>
+          <TouchableOpacity onPress={() => handleFavoriteToggle(item)}>
+            {home.favorites.find((favorite) => favorite.id === item.id) ? (
+              <MaterialCommunityIcons name="heart" color="red" size={25} />
+            ) : (
+              <MaterialCommunityIcons name="heart-outline" color="white" size={25} />
+            )}
+          </TouchableOpacity>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
 
   return (
     <>
@@ -24,7 +104,7 @@ const Popular = () => {
         animationType="slide"
         transparent={true}
         visible={openModal}
-        onRequestClose={() => setModalVisible(!openModal)}
+        onRequestClose={handleOpenModal}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
@@ -48,143 +128,20 @@ const Popular = () => {
         </View>
       </Modal>
       <View style={{ gap: 16 }}>
-        {!isLoggedIn
-          ? home.home.map((item, index) => (
-              <TouchableOpacity
-                onPress={() => {
-                  console.log(item.id);
-                  router.push({
-                    pathname: `details/${item.id}`,
-                    params: item.id,
-                  });
-                }}
-                style={{
-                  backgroundColor: 'white',
-                  borderRadius: 10,
-                  borderWidth: 0.3,
-                  borderColor: 'grey',
-                }}
-                key={index}
-              >
-                <View style={{ borderRadius: 20 }}>
-                  <Image
-                    source={{ uri: item.propertyImage.image.url }}
-                    style={{ width: 'auto', height: 100, borderRadius: 10 }}
-                  />
-                </View>
-                <View
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    margin: 10,
-                  }}
-                >
-                  <View style={{ flex: 2 }}>
-                    <Text style={{ fontSize: 16 }}>{item.name}</Text>
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        alignItems: 'center',
-                      }}
-                    >
-                      <MaterialCommunityIcons name="star" color={COLOR.secondary} size={16} />
-                      <Text>{item.reviews.score}</Text>
-                    </Text>
-                  </View>
-                  <View
-                    style={{
-                      flex: 2,
-                      alignItems: 'flex-end',
-                      justifyContent: 'space-between',
-                    }}
-                  >
-                    <Text style={{ fontSize: 16 }}>{item.price.lead.formatted}</Text>
-                    <TouchableOpacity onPress={() => setOpenModal(!openModal)}>
-                      <MaterialCommunityIcons name="heart-outline" color="black" size={25} />
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            ))
-          : home.home.map((item, index) => (
-              <TouchableOpacity
-                onPress={() => {
-                  console.log(item.id);
-                  router.push({
-                    pathname: `details/${item.id}`,
-                    params: item.id,
-                  });
-                }}
-                style={{
-                  backgroundColor: 'white',
-                  borderRadius: 10,
-                  borderWidth: 0.3,
-                  borderColor: 'grey',
-                }}
-                key={index}
-              >
-                <View style={{ borderRadius: 20 }}>
-                  <Image
-                    source={{ uri: item.propertyImage.image.url }}
-                    style={{ width: 'auto', height: 100, borderRadius: 10 }}
-                  />
-                </View>
-                <View
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    margin: 10,
-                  }}
-                >
-                  <View style={{ flex: 2 }}>
-                    <Text style={{ fontSize: 16 }}>{item.name}</Text>
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        alignItems: 'center',
-                      }}
-                    >
-                      <MaterialCommunityIcons name="star" color={COLOR.secondary} size={16} />
-                      <Text>{item.reviews.score}</Text>
-                    </Text>
-                  </View>
-                  <View
-                    style={{
-                      flex: 2,
-                      alignItems: 'flex-end',
-                      justifyContent: 'space-between',
-                    }}
-                  >
-                    <Text style={{ fontSize: 16 }}>{item.price.lead.formatted}</Text>
-                    {home.favorites.find((favorite) => favorite.id === item.id) ? (
-                      <TouchableOpacity
-                        onPress={() => {
-                          dispatch(removeFromFavorites(item.id));
-                          console.log('ini hapus', item.id);
-                        }}
-                      >
-                        <MaterialCommunityIcons name="heart" color="red" size={25} />
-                      </TouchableOpacity>
-                    ) : (
-                      <TouchableOpacity
-                        onPress={() => {
-                          dispatch(addToFavorites(item));
-                          console.log('ini tambah', item);
-                        }}
-                      >
-                        <MaterialCommunityIcons name="heart-outline" color="black" size={25} />
-                      </TouchableOpacity>
-                    )}
-                  </View>
-                </View>
-              </TouchableOpacity>
-            ))}
+        {!isLoggedIn ? home.home.map(renderProperty) : home.home.map(renderProperty)}
       </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
+  card: {
+    backgroundColor: COLOR.primary,
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 0.3,
+    borderColor: 'grey',
+  },
   title: {
     fontWeight: 'bold',
     fontSize: 20,
