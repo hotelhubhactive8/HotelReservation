@@ -20,7 +20,6 @@ const HotelDetail = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
-  const home = useSelector((state) => state.home);
   const { id } = useLocalSearchParams();
 
   useEffect(() => {
@@ -43,13 +42,14 @@ const HotelDetail = () => {
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: COLOR.lightGray },
+          headerStyle: { backgroundColor: COLOR.primary },
           headerShadowVisible: false,
           headerTitle: 'Details',
+          headerTitleStyle: { color: 'white' },
           headerLeft: () => <Text></Text>,
         }}
       />
-      <ScrollView style={{ maxWidth: '90%', paddingHorizontal: 16 }}>
+      <ScrollView style={{ maxWidth: '90%', paddingHorizontal: 16, marginTop: 20 }}>
         {loading && details.length < 1 ? (
           <ActivityIndicator />
         ) : (
@@ -71,38 +71,49 @@ const HotelDetail = () => {
               })}
             </View>
             <View style={styles.detailContainer}>
-              <View style={styles.header}>
+              <View>
+                <Text style={styles.overview}>Overview :</Text>
+                <View>
+                  <FlatList
+                    data={IMAGE}
+                    renderItem={({ item }) => (
+                      <Image
+                        source={{ uri: item.url }}
+                        style={{
+                          width: 110,
+                          height: 70,
+                          borderRadius: 10,
+                          marginRight: 15,
+                        }}
+                      />
+                    )}
+                    key={(item) => item.imageId}
+                    horizontal
+                  />
+                </View>
                 <View>
                   <Text style={styles.name}>{details?.summary?.name}</Text>
-                  <Text style={styles.tagline}>{details?.summary?.tagline}</Text>
+                  <Text
+                    style={{
+                      backgroundColor: 'black',
+                      color: 'white',
+                      paddingHorizontal: 8,
+                      paddingVertical: 5,
+                      borderRadius: 10,
+                      width: 'max-content',
+                      alignSelf: 'flex-start',
+                    }}
+                  >
+                    Rating: <MaterialCommunityIcons name="star" size={18} color={COLOR.white} />
+                    {details?.summary?.overview?.propertyRating?.rating}
+                  </Text>
                 </View>
               </View>
               <View>
-                <Text>
-                  <MaterialCommunityIcons name="star" size={18} color={COLOR.secondary} />
-                  {details?.summary?.overview?.propertyRating?.rating}
-                </Text>
+                <Text style={styles.tagline}>{details?.summary?.tagline}</Text>
               </View>
               <View>
                 {!description ? <Text>Tidak ada deskripsi.</Text> : <Text>{description}</Text>}
-              </View>
-              <View>
-                <FlatList
-                  data={IMAGE}
-                  renderItem={({ item }) => (
-                    <Image
-                      source={{ uri: item.url }}
-                      style={{
-                        width: 200,
-                        height: 100,
-                        borderRadius: 10,
-                        marginRight: 15,
-                      }}
-                    />
-                  )}
-                  key={(item) => item.imageId}
-                  horizontal
-                />
               </View>
             </View>
             <TouchableOpacity
@@ -117,7 +128,7 @@ const HotelDetail = () => {
                 router.push('login');
               }}
             >
-              <MaterialCommunityIcons name="book-clock" color={COLOR.secondary} size={20} />
+              <MaterialCommunityIcons name="book-clock" color={COLOR.white} size={20} />
               <Text style={styles.bookingText}>Booking Sekarang</Text>
             </TouchableOpacity>
           </View>
@@ -126,19 +137,21 @@ const HotelDetail = () => {
     </SafeAreaView>
   );
 };
+
 const styles = StyleSheet.create({
   detailContainer: {
     gap: 10,
   },
 
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    borderBottomWidth: 0.3,
+  overview: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
-
+  
   name: {
     fontSize: 20,
+    fontWeight: 'bold',
   },
 
   btnFav: {
@@ -159,7 +172,7 @@ const styles = StyleSheet.create({
 
   bookingText: {
     textAlign: 'center',
-    color: COLOR.secondary,
+    color: COLOR.white,
     fontSize: 18,
   },
 });

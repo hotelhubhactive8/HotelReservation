@@ -60,6 +60,12 @@ export default function AppLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="login"
+        options={{
+          href: null,
+        }}
+      />
       {/* <Tabs.Screen
         name="favorites"
         options={{
