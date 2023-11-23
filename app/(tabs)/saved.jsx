@@ -1,36 +1,28 @@
 import React from 'react';
-import { useRouter } from 'expo-router';
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { Stack } from 'expo-router';
-import COLOR from '../../constants/Colors';
 import { useDispatch, useSelector } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { removeFromFavorites } from '../../redux/slice/homeSlice';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    padding: 16,
-    gap: 20,
-    alignItems: 'center',
-  },
-  btnLogin: {
-    backgroundColor: COLOR.secondary,
-    padding: 10,
-    width: 200,
-    borderRadius: 20,
-  },
-});
+import NotLogin from '../../components/Login/NotLogin';
+import { Stack, useRouter } from 'expo-router';
+import COLOR from '../../constants/Colors';
 
 const Saved = () => {
   const dispatch = useDispatch();
-  const router = useRouter();
   const { isLoggedIn } = useSelector((state) => state.auth);
   const home = useSelector((state) => state.home);
 
+  const router = useRouter();
+
   return isLoggedIn ? (
     <ScrollView style={{ flex: 1 }}>
+      <Stack.Screen
+        options={{
+          headerStyle: { backgroundColor: COLOR.primary },
+          headerTitle: 'Saved',
+          headerTitleStyle: { color: 'white' },
+        }}
+      />
       <View style={styles.container}>
         {home.favorites.length < 1 ? (
           <View style={{ alignItems: 'center' }}>
@@ -99,43 +91,17 @@ const Saved = () => {
       </View>
     </ScrollView>
   ) : (
-    <ScrollView style={{ flex: 1 }}>
-      <Stack.Screen
-        options={{
-          headerStyle: { backgroundColor: COLOR.lightGray },
-          // headerShadowVisible: false,
-          headerTitle: '',
-          headerTitleStyle: {},
-        }}
-      />
-      <View
-        style={{
-          alignItems: 'center',
-          height: 600,
-          justifyContent: 'center',
-          gap: 10,
-        }}
-      >
-        <Text style={{ fontSize: 20 }}>Belum login?</Text>
-        <TouchableOpacity
-          style={styles.btnLogin}
-          onPress={() => {
-            router.replace('login');
-          }}
-        >
-          <Text
-            style={{
-              textAlign: 'center',
-
-              fontSize: 25,
-            }}
-          >
-            Login
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+    <NotLogin />
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    padding: 16,
+    gap: 20,
+    alignItems: 'center',
+  },
+});
 export default Saved;
