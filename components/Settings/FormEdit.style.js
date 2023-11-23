@@ -1,4 +1,3 @@
-import ICON from '../../constants/Icons';
 import COLOR from '../../constants/Colors';
 import { StyleSheet } from 'react-native';
 
@@ -38,22 +37,21 @@ const styles = StyleSheet.create({
   head: {
     fontSize: 23,
     textAlign: 'center',
+    fontWeight: 'bold',
   },
 
   label: {
     fontSize: 17,
+    fontWeight: 'bold',
   },
 
   input: {
-    borderWidth: 0.8,
-    borderRadius: 5,
-    padding: 12,
+    borderBottomWidth: 0.6,
     fontSize: 17,
   },
 
   logout: {
     color: 'red',
-
     borderTopWidth: 0.5,
     paddingVertical: 13,
     fontSize: 17,

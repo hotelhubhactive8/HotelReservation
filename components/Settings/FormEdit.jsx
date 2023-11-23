@@ -7,6 +7,30 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import COLOR from './../../constants/Colors';
 import styles from './FormEdit.style';
 
+const ModalBox = ({ openModal, setOpenModal, setModalVisible }) => {
+  return (
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={openModal}
+      onRequestClose={() => setModalVisible(!openModal)}
+    >
+      <View style={styles.centeredView}>
+        <View style={styles.modalView}>
+          <TouchableOpacity
+            onPress={() => setOpenModal(!openModal)}
+            style={{ alignSelf: 'flex-end' }}
+          >
+            <MaterialCommunityIcons name="close" size={18} />
+          </TouchableOpacity>
+          <MaterialCommunityIcons name="check-circle" size={70} color="green" />
+          <Text style={{ fontSize: 20 }}>Successfully Updated.</Text>
+        </View>
+      </View>
+    </Modal>
+  );
+};
+
 const FormEdit = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -61,28 +85,10 @@ const FormEdit = () => {
 
   return (
     <View style={styles.container}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={openModal}
-        onRequestClose={() => setModalVisible(!openModal)}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <TouchableOpacity
-              onPress={() => setOpenModal(!openModal)}
-              style={{ alignSelf: 'flex-end' }}
-            >
-              <MaterialCommunityIcons name="close" size={18} />
-            </TouchableOpacity>
-            <MaterialCommunityIcons name="check-circle" size={70} color="green" />
-            <Text style={{ fontSize: 20 }}>Data anda berhasil diupdate.</Text>
-          </View>
-        </View>
-      </Modal>
-      <Text style={styles.head}>Personal Data</Text>
+      <ModalBox openModal={openModal} setOpenModal={setOpenModal} setModalVisible={setOpenModal} />
+      <Text style={styles.head}>Manage Account</Text>
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Nama Lengkap</Text>
+        <Text style={styles.label}>Fullname</Text>
         <TextInput
           value={newFullName}
           style={styles.input}
@@ -94,7 +100,7 @@ const FormEdit = () => {
         {errorFullName && <Text style={{ color: 'red' }}>Format nama lengkap salah.</Text>}
       </View>
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Alamat Email</Text>
+        <Text style={styles.label}>Email</Text>
         <TextInput
           keyboardType="email-address"
           value={newEmail}
@@ -131,7 +137,7 @@ const FormEdit = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.inputContainer}>
-        <Text style={styles.label}>Nomor Telepon</Text>
+        <Text style={styles.label}>Phone Number</Text>
         <TextInput
           keyboardType="numeric"
           value={newTelp}
@@ -146,12 +152,13 @@ const FormEdit = () => {
       <TouchableOpacity onPress={submitHandler} style={styles.save}>
         <Text
           style={{
-            color: COLOR.secondary,
+            color: COLOR.white,
+            fontWeight: 'bold',
             textAlign: 'center',
             fontSize: 17,
           }}
         >
-          Simpan Data
+          Save Data
         </Text>
       </TouchableOpacity>
       <TouchableOpacity

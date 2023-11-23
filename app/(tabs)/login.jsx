@@ -1,37 +1,18 @@
 import React, { useState } from 'react';
 import { Link, useRouter, useRootNavigation, Stack } from 'expo-router';
-import { SafeAreaView, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+} from 'react-native';
 import COLOR from '../../constants/Colors';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/slice/authSlice';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLOR.lightGray,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  btnPrimary: {
-    backgroundColor: COLOR.primary,
-    padding: 10,
-    borderRadius: 20,
-  },
-
-  btnText: {
-    color: '#ffffff',
-    textAlign: 'center',
-
-    fontSize: 16,
-  },
-
-  input: {
-    borderBottomWidth: 0.6,
-    fontSize: 16,
-  },
-});
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -66,7 +47,7 @@ const Login = () => {
     <SafeAreaView style={style.container}>
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: COLOR.lightGray },
+          headerStyle: { backgroundColor: COLOR.white },
           headerShadowVisible: false,
           headerTitle: '',
         }}
@@ -81,12 +62,17 @@ const Login = () => {
         }}
       >
         <View>
+          <Image
+            source={require('../../assets/images/travel.png')}
+            style={{ width: '100%', height: 200 }}
+          />
           <Text
             style={[
               {
                 fontSize: 30,
                 marginBottom: 10,
                 textAlign: 'center',
+                fontWeight: 'bold',
               },
             ]}
           >
@@ -152,4 +138,30 @@ const Login = () => {
   );
 };
 
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLOR.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  btnPrimary: {
+    backgroundColor: COLOR.primary,
+    padding: 10,
+    borderRadius: 20,
+  },
+
+  btnText: {
+    color: '#ffffff',
+    textAlign: 'center',
+
+    fontSize: 16,
+  },
+
+  input: {
+    borderBottomWidth: 0.6,
+    fontSize: 16,
+  },
+});
 export default Login;

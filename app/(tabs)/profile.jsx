@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView, Image, ScrollView, StyleSheet } from 'react-native';
+import { View, SafeAreaView, Image, ScrollView, StyleSheet, Dimensions } from 'react-native';
 import { Stack } from 'expo-router';
 import { useSelector } from 'react-redux';
 
@@ -8,14 +8,14 @@ import ICON from '../../constants/Icons';
 import FormEdit from '../../components/Settings/FormEdit';
 import NotLogin from '../../components/Login/NotLogin';
 
-const Settings = () => {
+const Profile = () => {
   const { isLoggedIn } = useSelector((state) => state.auth);
 
   const renderHeader = () => {
     return (
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: COLOR.lightGray },
+          headerStyle: { backgroundColor: COLOR.white },
           headerShadowVisible: false,
           headerTitle: isLoggedIn ? 'Settings' : '',
           headerTitleStyle: {},
@@ -29,7 +29,7 @@ const Settings = () => {
       <SafeAreaView style={styles.container}>
         {renderHeader()}
         <View style={styles.icon}>
-          <Image source={ICON.user} />
+          <Image source={ICON.user} style={{ width: '90%', height: '100%' }} />
         </View>
         <View style={styles.formContainer}>
           <FormEdit />
@@ -43,8 +43,9 @@ const Settings = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLOR.lightGray,
+    backgroundColor: COLOR.white,
     gap: 20,
+    height: Dimensions.get('screen').height - 140,
   },
 
   icon: {
@@ -56,6 +57,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     overflow: 'hidden',
+    borderColor: 'black',
+    borderWidth: 1,
   },
 
   formContainer: {
@@ -67,4 +70,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Settings;
+export default Profile;
