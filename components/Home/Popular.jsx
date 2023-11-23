@@ -90,19 +90,7 @@ const Popular = () => {
             >
               <View>
                 <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{item.name}</Text>
-                <Text
-                  style={{
-                    fontSize: 13,
-                    backgroundColor: 'black',
-                    color: 'white',
-                    paddingHorizontal: 8,
-                    paddingVertical: 2,
-                    borderRadius: 10,
-                    width: 'max-content',
-                    alignSelf: 'flex-start',
-                    marginTop: 2,
-                  }}
-                >
+                <Text style={styles.tag}>
                   Rating : <MaterialCommunityIcons name="star" color={COLOR.secondary} size={16} />
                   <Text>{item.reviews.score}</Text>
                 </Text>
@@ -167,6 +155,17 @@ const styles = StyleSheet.create({
     marginLeft: 3,
     marginBottom: 5,
     textTransform: 'capitalize',
+  },
+  tag: {
+    fontSize: 13,
+    backgroundColor: 'black',
+    color: 'white',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 10,
+    width: 'max-content',
+    alignSelf: 'flex-start',
+    marginTop: 2,
   },
   centeredView: {
     flex: 1,

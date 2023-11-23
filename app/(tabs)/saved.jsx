@@ -53,36 +53,44 @@ const Saved = () => {
             >
               <View
                 style={{
+                  display: 'flex',
+                  flexDirection: 'row',
                   backgroundColor: 'white',
                   borderRadius: 10,
                   borderWidth: 0.3,
                   borderColor: 'grey',
-                  width: 300,
+                  width: 350,
                 }}
                 key={index}
               >
-                <View style={{ borderRadius: 20 }}>
+                <View style={{ borderRadius: 20, display: 'flex', flex: 2 }}>
                   <Image
                     source={{ uri: item.propertyImage.image.url }}
-                    style={{ width: 'auto', height: 100, borderRadius: 10 }}
+                    style={{ width: 'auto', height: 100, borderRadius: 10, resizeMode: 'cover' }}
                   />
                 </View>
                 <View
                   style={{
                     display: 'flex',
-                    flexDirection: 'row',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
                     margin: 10,
+                    flex: 3,
                   }}
                 >
                   <View style={{ flex: 2 }}>
-                    <Text style={{ fontSize: 16 }}>{item.name}</Text>
-                    <Text style={{ fontSize: 16 }}>Rating {item.reviews.score}</Text>
+                    <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{item.name}</Text>
+                    <Text style={styles.tag}>
+                      Rating : <MaterialCommunityIcons name="star" color={'white'} size={16} />
+                      {item.reviews.score}
+                    </Text>
                   </View>
                   <View
                     style={{
                       flex: 2,
-                      alignItems: 'flex-end',
-                      justifyContent: 'space-around',
+                      display: 'flex',
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
                     }}
                   >
                     <Text style={{ fontSize: 16 }}>{item.price.lead.formatted}</Text>
@@ -115,6 +123,17 @@ const styles = StyleSheet.create({
     gap: 20,
     alignItems: 'center',
     minHeight: Dimensions.get('screen').height,
+  },
+  tag: {
+    fontSize: 13,
+    backgroundColor: 'black',
+    color: 'white',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 10,
+    width: 'max-content',
+    alignSelf: 'flex-start',
+    marginTop: 2,
   },
 });
 export default Saved;
