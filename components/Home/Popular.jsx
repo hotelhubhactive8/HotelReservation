@@ -22,7 +22,11 @@ const ModalBox = ({ openModal, setOpenModal, setModalVisible, router }) => {
           >
             <MaterialCommunityIcons name="close" size={18} />
           </TouchableOpacity>
-          <Text style={styles.modalText}>Anda belum login.</Text>
+          <Image
+            source={require('../../assets/images/sad.png')}
+            style={{ width: 70, height: 70 }}
+          />
+          <Text style={styles.modalText}>You need to login</Text>
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
@@ -68,60 +72,50 @@ const Popular = () => {
                 params: item.id,
               });
             }}
-            style={{
-              backgroundColor: 'white',
-              borderRadius: 10,
-              borderWidth: 0.3,
-              borderColor: 'grey',
-            }}
+            style={styles.card}
             key={index}
           >
             <View style={{ borderRadius: 20 }}>
               <Image
                 source={{ uri: item.propertyImage.image.url }}
-                style={{ width: 'auto', height: 100, borderRadius: 10 }}
+                style={{ width: 'auto', height: 130, borderRadius: 10 }}
               />
             </View>
             <View
               style={{
                 display: 'flex',
-                flexDirection: 'row',
+                flexDirection: 'column',
                 margin: 10,
               }}
             >
-              <View style={{ flex: 2 }}>
-                <Text style={{ fontSize: 16 }}>{item.name}</Text>
+              <View>
+                <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{item.name}</Text>
                 <Text
                   style={{
-                    fontSize: 16,
-                    alignItems: 'center',
+                    fontSize: 13,
+                    backgroundColor: 'black',
+                    color: 'white',
+                    paddingHorizontal: 8,
+                    paddingVertical: 2,
+                    borderRadius: 10,
+                    width: 'max-content',
+                    alignSelf: 'flex-start',
+                    marginTop: 2,
                   }}
                 >
-                  <MaterialCommunityIcons name="star" color={COLOR.secondary} size={16} />
+                  Rating : <MaterialCommunityIcons name="star" color={COLOR.secondary} size={16} />
                   <Text>{item.reviews.score}</Text>
                 </Text>
               </View>
               {!isLoggedIn ? (
-                <View
-                  style={{
-                    flex: 2,
-                    alignItems: 'flex-end',
-                    justifyContent: 'space-between',
-                  }}
-                >
+                <View style={styles.priceSave}>
                   <Text style={{ fontSize: 16 }}>{item.price.lead.formatted}</Text>
                   <TouchableOpacity onPress={() => setOpenModal(!openModal)}>
                     <MaterialCommunityIcons name="heart-outline" color="black" size={25} />
                   </TouchableOpacity>
                 </View>
               ) : (
-                <View
-                  style={{
-                    flex: 2,
-                    alignItems: 'flex-end',
-                    justifyContent: 'space-between',
-                  }}
-                >
+                <View style={styles.priceSave}>
                   <Text style={{ fontSize: 16 }}>{item.price.lead.formatted}</Text>
                   {home.favorites.find((favorite) => favorite.id === item.id) ? (
                     <TouchableOpacity
@@ -154,11 +148,18 @@ const Popular = () => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: COLOR.primary,
-    padding: 10,
+    backgroundColor: '#F4F9F9',
     borderRadius: 10,
     borderWidth: 0.3,
-    borderColor: 'grey',
+    borderColor: COLOR.primary,
+    padding: 10,
+  },
+  priceSave: {
+    flex: 2,
+    marginTop: 6,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   title: {
     fontWeight: 'bold',
@@ -194,10 +195,10 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 50,
     elevation: 2,
-    backgroundColor: COLOR.secondary,
+    backgroundColor: COLOR.primary,
   },
   textStyle: {
-    color: COLOR.primary,
+    color: COLOR.white,
     textAlign: 'center',
     fontSize: 20,
   },

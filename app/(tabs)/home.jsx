@@ -15,7 +15,7 @@ const home = () => {
       <SafeAreaView style={{ flex: 1, backgroundColor: COLOR.white, marginTop: -30 }}>
         <Stack.Screen
           options={{
-            title: 'HotelHub',
+            headerTitle: 'HotelHub',
             headerTitleStyle: {
               fontSize: 20,
               fontWeight: 'bold',
