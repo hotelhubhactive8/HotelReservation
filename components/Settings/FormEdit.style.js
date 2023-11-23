@@ -62,6 +62,18 @@ const styles = StyleSheet.create({
     padding: 12,
     backgroundColor: COLOR.primary,
   },
+
+  buttonText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  modalTouch: {
+    minWidth: '100%',
+    padding: 8,
+    borderTopColor: 'black',
+    borderTopWidth: 0.5,
+  },
 });
 
 export default styles;

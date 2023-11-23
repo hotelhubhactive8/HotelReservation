@@ -32,6 +32,7 @@ const ModalBox = ({ openModal, setOpenModal, setModalVisible }) => {
 };
 
 const FormEdit = () => {
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -161,13 +162,38 @@ const FormEdit = () => {
           Save Data
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          handleLogout();
-        }}
-      >
+
+      <TouchableOpacity onPress={() => setShowLogoutModal(true)}>
         <Text style={styles.logout}>Logout</Text>
       </TouchableOpacity>
+
+      {/* Logout Confirmation Modal */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={showLogoutModal}
+        onRequestClose={() => setShowLogoutModal(false)}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={{ fontSize: 20, marginBottom: 20 }}>
+              Are you sure you want to log out?
+            </Text>
+            <TouchableOpacity
+              style={styles.modalTouch}
+              onPress={() => {
+                setShowLogoutModal(false);
+                handleLogout();
+              }}
+            >
+              <Text style={{ ...styles.buttonText, color: 'red' }}>Yes, Logout</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.modalTouch} onPress={() => setShowLogoutModal(false)}>
+              <Text style={{ ...styles.buttonText, color: 'gray' }}>Cancel</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
