@@ -1,5 +1,13 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { removeFromFavorites } from '../../redux/slice/homeSlice';
@@ -25,8 +33,12 @@ const Saved = () => {
       />
       <View style={styles.container}>
         {home.favorites.length < 1 ? (
-          <View style={{ alignItems: 'center' }}>
-            <Text style={{ fontSize: 20 }}>Belum ada yang disimpan</Text>
+          <View style={{ alignItems: 'center', height: '80%', justifyContent: 'center' }}>
+            <Image
+              source={require('../../assets/images/empty.png')}
+              style={{ width: 200, height: 200 }}
+            />
+            <Text style={{ fontSize: 20 }}>Nothing saved yet</Text>
           </View>
         ) : (
           home.favorites.map((item, index) => (
@@ -102,6 +114,7 @@ const styles = StyleSheet.create({
     padding: 16,
     gap: 20,
     alignItems: 'center',
+    minHeight: Dimensions.get('screen').height,
   },
 });
 export default Saved;
