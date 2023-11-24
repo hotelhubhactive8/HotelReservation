@@ -113,7 +113,7 @@ const HotelDetail = () => {
                 <Text style={styles.tagline}>{details?.summary?.tagline}</Text>
               </View>
               <View>
-                {!description ? <Text>Tidak ada deskripsi.</Text> : <Text>{description}</Text>}
+                {!description ? <Text>No descriptions.</Text> : <Text>{description}</Text>}
               </View>
             </View>
             <TouchableOpacity
@@ -129,7 +129,7 @@ const HotelDetail = () => {
               }}
             >
               <MaterialCommunityIcons name="book-clock" color={COLOR.white} size={20} />
-              <Text style={styles.bookingText}>Booking Sekarang</Text>
+              <Text style={styles.bookingText}>Booking Now</Text>
             </TouchableOpacity>
           </View>
         )}

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import COLOR from '../../../constants/Colors';
 import { addBooking } from '../../../redux/slice/bookingSlice';
 import { resetDetails } from '../../../redux/slice/detailSlice';
-import { useEffect } from 'react';
 
 const style = StyleSheet.create({
   container: {
@@ -63,7 +62,7 @@ const Booking = () => {
         <View>
           <Text>Booking</Text>
           <View>
-            <Text>Tanggal Check In</Text>
+            <Text>Date Check In</Text>
             <TextInput
               name="checkIn"
               placeholder="checkIn"
@@ -76,7 +75,7 @@ const Booking = () => {
             />
           </View>
           <View>
-            <Text>Tanggal Check Out</Text>
+            <Text>Date Check Out</Text>
             <TextInput
               name="checkOut"
               placeholder="checkOut"

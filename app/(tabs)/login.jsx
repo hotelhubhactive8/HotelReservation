@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useRouter, useRootNavigation, Stack } from 'expo-router';
+import { useRouter, Stack } from 'expo-router';
 import {
   SafeAreaView,
   View,
@@ -17,7 +17,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  // const rootNavigation = useRootNavigation();
   const auth = useSelector((state) => state.auth);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +30,6 @@ const Login = () => {
     if (email.email === auth.email && password.password === auth.password) {
       console.log('masuk');
       dispatch(login());
-      // router.replace("home");
       router.back();
       return;
     }

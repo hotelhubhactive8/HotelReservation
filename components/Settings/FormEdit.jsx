@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout, editUser } from '../../redux/slice/authSlice';
 import { useState } from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import COLOR from './../../constants/Colors';
 import styles from './FormEdit.style';
 
 const ModalBox = ({ openModal, setOpenModal, setModalVisible }) => {
@@ -98,7 +97,7 @@ const FormEdit = () => {
             setNewFullName(inputFullName);
           }}
         />
-        {errorFullName && <Text style={{ color: 'red' }}>Format nama lengkap salah.</Text>}
+        {errorFullName && <Text style={{ color: 'red' }}>Incorrect fullname format.</Text>}
       </View>
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Email</Text>
@@ -111,7 +110,7 @@ const FormEdit = () => {
             setNewEmail(inputEmail);
           }}
         />
-        {errorEmail && <Text style={{ color: 'red' }}>Format email salah.</Text>}
+        {errorEmail && <Text style={{ color: 'red' }}>Incorrect email format.</Text>}
       </View>
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Password</Text>
@@ -124,7 +123,7 @@ const FormEdit = () => {
             setNewPassword(inputPassword);
           }}
         />
-        {errorPassword && <Text style={{ color: 'red' }}>Format password salah.</Text>}
+        {errorPassword && <Text style={{ color: 'red' }}>Incorrect password format.</Text>}
         <TouchableOpacity
           style={{
             flexDirection: 'row',
@@ -148,7 +147,7 @@ const FormEdit = () => {
             setNewTelp(inputTelp);
           }}
         />
-        {errorTelp && <Text style={{ color: 'red' }}>Format nomor telepon salah.</Text>}
+        {errorTelp && <Text style={{ color: 'red' }}>Incorrect phone number format.</Text>}
       </View>
 
       <TouchableOpacity onPress={submitHandler} style={styles.save}>

@@ -1,7 +1,5 @@
 import React from 'react';
-import { useRouter } from 'expo-router';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { Stack } from 'expo-router';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import ICON from '../../constants/Icons';
 import COLOR from '../../constants/Colors';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,7 +7,6 @@ import { clearBooking } from '../../redux/slice/bookingSlice';
 import NotLogin from './../../components/Login/NotLogin';
 
 const history = () => {
-  const router = useRouter();
   const { isLoggedIn, fullName, email, telp } = useSelector((state) => state.auth);
   const favorite = useSelector((state) => state.home.favorites);
   const booking = useSelector((state) => state.booking.booking);
