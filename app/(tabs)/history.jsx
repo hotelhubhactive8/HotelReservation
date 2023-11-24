@@ -22,11 +22,13 @@ const history = () => {
       <View style={styles.profileContainer}>
         <View style={styles.profileInfo}>
           <View>
-            <Image source={ICON.person} style={{ height: 50, width: 50, borderRadius: 10 }} />
+            <Image source={ICON.hacker} style={{ height: 50, width: 50, borderRadius: 10 }} />
           </View>
-          <View style={{ flex: 1, justifyContent: 'center', textAlign: 'center' }}>
-            <Text>{fullName}</Text>
-            <Text>{email}</Text>
+          <View style={{ marginTop: 10 }}>
+            <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>
+              {fullName}
+            </Text>
+            <Text style={{ textAlign: 'center' }}>{email}</Text>
           </View>
         </View>
         <View style={styles.profileHistory}>
@@ -35,7 +37,9 @@ const history = () => {
               <Text>Bookings</Text>
             </View>
             <View>
-              <Text style={{ color: '#32a852', fontWeight: 'bold' }}>{booking.length}</Text>
+              <Text style={{ color: '#32a852', fontWeight: 'bold', textAlign: 'center' }}>
+                {booking.length}
+              </Text>
             </View>
           </View>
           <View style={{ textAlign: 'center' }}>
@@ -43,7 +47,9 @@ const history = () => {
               <Text>Favorites</Text>
             </View>
             <View>
-              <Text style={{ color: '#32a852', fontWeight: 'bold' }}>{favorite.length}</Text>
+              <Text style={{ color: '#32a852', fontWeight: 'bold', textAlign: 'center' }}>
+                {favorite.length}
+              </Text>
             </View>
           </View>
         </View>
@@ -80,7 +86,7 @@ const history = () => {
                 <View>
                   <Image
                     source={{ uri: item.propertyGallery.images[0].image.url }}
-                    style={{ height: 50, width: 330, borderRadius: 10 }}
+                    style={{ height: 100, width: 330, borderRadius: 10 }}
                   />
                 </View>
                 <View>
@@ -148,9 +154,8 @@ const styles = StyleSheet.create({
     margin: 16,
   },
   profileInfo: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: 20,
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   profileHistory: {
     display: 'flex',

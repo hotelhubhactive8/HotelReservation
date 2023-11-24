@@ -1,5 +1,6 @@
 import { Tabs } from 'expo-router';
 import { AntDesign, Entypo, Ionicons } from '@expo/vector-icons';
+import COLOR from '../../constants/Colors';
 
 export default function AppLayout() {
   return (
@@ -8,6 +9,7 @@ export default function AppLayout() {
         name="home"
         options={{
           title: 'Home',
+
           tabBarIcon: ({ focused }) =>
             focused ? (
               <Entypo name="home" size={24} color="#003580" />
@@ -32,6 +34,8 @@ export default function AppLayout() {
         name="history"
         options={{
           title: 'History',
+          headerStyle: { backgroundColor: COLOR.primary },
+          headerTitleStyle: { color: 'white' },
           tabBarIcon: ({ focused }) =>
             focused ? (
               <Ionicons name="notifications" size={24} color="#003580" />

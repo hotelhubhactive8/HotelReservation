@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     padding: 16,
     gap: 20,
     alignItems: 'center',
-    minHeight: Dimensions.get('screen').height,
+    minHeight: Dimensions.get('screen').height - 140,
   },
   tag: {
     fontSize: 13,
