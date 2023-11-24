@@ -121,7 +121,7 @@ const HotelDetail = () => {
               onPress={() => {
                 if (auth.isLoggedIn === true) {
                   return router.push({
-                    pathname: `booking/${details?.summary?.name}`,
+                    pathname: `/(tabs)/booking/${details?.summary?.name}`,
                     params: details?.summary?.name,
                   });
                 }
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 10,
   },
-  
+
   name: {
     fontSize: 20,
     fontWeight: 'bold',

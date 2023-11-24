@@ -3,6 +3,7 @@ import Calendar from '../assets/images/calendar_month_FILL0_wght400_GRAD0_opsz48
 import User from '../assets/images/user.png';
 import Person from '../assets/images/user.png';
 import Hotel from '../assets/images/hotel.jpeg';
+import Hacker from '../assets/images/hacker.png';
 
 const ICON = {
   search: Search,
@@ -10,6 +11,7 @@ const ICON = {
   user: User,
   person: Person,
   hotel: Hotel,
+  hacker: Hacker,
 };
 
 export default ICON;

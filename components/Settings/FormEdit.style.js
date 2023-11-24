@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   },
 
   inputContainer: {
+    marginTop: 20,
     gap: 5,
   },
 
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
     fontSize: 23,
     textAlign: 'center',
     fontWeight: 'bold',
+    marginTop: -10,
   },
 
   label: {
@@ -51,9 +53,16 @@ const styles = StyleSheet.create({
   },
 
   logout: {
-    color: 'red',
-    borderTopWidth: 0.5,
-    paddingVertical: 13,
+    borderRadius: 5,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: 'black',
+  },
+
+  touchText: {
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold',
     fontSize: 17,
   },
 
@@ -61,6 +70,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 12,
     backgroundColor: COLOR.primary,
+    marginTop: 50,
   },
 
   buttonText: {

@@ -150,21 +150,13 @@ const FormEdit = () => {
         />
         {errorTelp && <Text style={{ color: 'red' }}>Format nomor telepon salah.</Text>}
       </View>
+
       <TouchableOpacity onPress={submitHandler} style={styles.save}>
-        <Text
-          style={{
-            color: COLOR.white,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            fontSize: 17,
-          }}
-        >
-          Save Data
-        </Text>
+        <Text style={styles.touchText}>Save Data</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => setShowLogoutModal(true)}>
-        <Text style={styles.logout}>Logout</Text>
+      <TouchableOpacity onPress={() => setShowLogoutModal(true)} style={styles.logout}>
+        <Text style={{ ...styles.touchText, color: 'red' }}>Logout</Text>
       </TouchableOpacity>
 
       {/* Logout Confirmation Modal */}

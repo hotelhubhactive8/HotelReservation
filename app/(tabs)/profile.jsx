@@ -15,10 +15,12 @@ const Profile = () => {
     return (
       <Stack.Screen
         options={{
-          headerStyle: { backgroundColor: COLOR.white },
+          headerStyle: { backgroundColor: COLOR.primary },
           headerShadowVisible: false,
           headerTitle: isLoggedIn ? 'Settings' : '',
-          headerTitleStyle: {},
+          headerTitleStyle: {
+            color: 'white',
+          },
         }}
       />
     );
@@ -29,7 +31,7 @@ const Profile = () => {
       <SafeAreaView style={styles.container}>
         {renderHeader()}
         <View style={styles.icon}>
-          <Image source={ICON.user} style={{ width: '90%', height: '100%' }} />
+          <Image source={ICON.hacker} style={{ width: '100%', height: '100%' }} />
         </View>
         <View style={styles.formContainer}>
           <FormEdit />
@@ -49,9 +51,10 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    width: 60,
-    height: 60,
-    backgroundColor: COLOR.white,
+    marginTop: 20,
+    width: 80,
+    height: 80,
+    backgroundColor: COLOR.lightGray,
     borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',

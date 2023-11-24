@@ -1,15 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  email: "johndoe@gmail.com",
-  password: "john123",
-  fullName: "John Doe",
-  telp: "08123456789",
+  email: 'ucup@gmail.com',
+  password: 'ucup123',
+  fullName: 'Ucup Surucup',
+  telp: '08123456789',
   isLoggedIn: false,
 };
 
 const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     login: (state) => {
