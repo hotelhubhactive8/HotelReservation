@@ -198,7 +198,7 @@ const Booking = () => {
                   })
                 );
                 dispatch(resetDetails());
-                rootNavigation.navigate('home');
+                rootNavigation.navigate('history');
               }}
             >
               <Text style={styles.btnBooking}>Confirm Booking</Text>

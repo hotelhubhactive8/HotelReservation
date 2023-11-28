@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import ICON from '../../constants/Icons';
 import COLOR from '../../constants/Colors';
 import { useSelector, useDispatch } from 'react-redux';
@@ -13,7 +13,7 @@ const history = () => {
   const dispatch = useDispatch();
 
   return isLoggedIn ? (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.profileContainer}>
         <View style={styles.profileInfo}>
           <View>
@@ -78,13 +78,13 @@ const history = () => {
           booking.map((item, index) => (
             <View style={styles.listHistory} key={index}>
               <View style={styles.historyContainer}>
-                <View>
+                <View style={{ flex: 1 }}>
                   <Image
                     source={{ uri: item.propertyGallery.images[0].image.url }}
-                    style={{ height: 100, width: 330, borderRadius: 10 }}
+                    style={{ height: 100, width: '100%', borderRadius: 10 }}
                   />
                 </View>
-                <View>
+                <View style={{ flex: 2 }}>
                   <View>
                     <Text>Nama : {item.summary.name}</Text>
                   </View>
@@ -117,7 +117,7 @@ const history = () => {
           ))
         )}
       </View>
-    </View>
+    </ScrollView>
   ) : (
     <NotLogin />
   );
@@ -177,8 +177,8 @@ const styles = StyleSheet.create({
     marginEnd: 16,
   },
   historyContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'row',
+    width: '100%',
     gap: 10,
   },
 });

@@ -55,6 +55,7 @@ const Saved = () => {
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
+                  alignItems: 'center',
                   backgroundColor: 'white',
                   borderRadius: 10,
                   borderWidth: 0.3,
@@ -63,7 +64,7 @@ const Saved = () => {
                 }}
                 key={index}
               >
-                <View style={{ borderRadius: 20, display: 'flex', flex: 2 }}>
+                <View style={{ borderRadius: 20, display: 'flex', flex: 2, padding: 10 }}>
                   <Image
                     source={{ uri: item.propertyImage.image.url }}
                     style={{ width: 'auto', height: 100, borderRadius: 10, resizeMode: 'cover' }}

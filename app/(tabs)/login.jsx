@@ -30,7 +30,7 @@ const Login = () => {
       router.back();
       return;
     }
-    setError('Email atau password anda salah.');
+    setError('Your email or password is incorrect.');
   };
 
   const showPasswordHandler = () => {
