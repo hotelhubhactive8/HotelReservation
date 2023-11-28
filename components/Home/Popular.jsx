@@ -66,7 +66,6 @@ const Popular = () => {
         {home.home.map((item, index) => (
           <TouchableOpacity
             onPress={() => {
-              console.log(item.id);
               router.push({
                 pathname: `details/${item.id}`,
                 params: item.id,
@@ -109,7 +108,6 @@ const Popular = () => {
                     <TouchableOpacity
                       onPress={() => {
                         dispatch(removeFromFavorites(item.id));
-                        console.log('ini hapus', item.id);
                       }}
                     >
                       <MaterialCommunityIcons name="heart" color="red" size={25} />
@@ -118,7 +116,6 @@ const Popular = () => {
                     <TouchableOpacity
                       onPress={() => {
                         dispatch(addToFavorites(item));
-                        console.log('ini tambah', item);
                       }}
                     >
                       <MaterialCommunityIcons name="heart-outline" color="black" size={25} />

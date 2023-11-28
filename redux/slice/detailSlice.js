@@ -1,47 +1,40 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import http from "../../services/http";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import http from '../../services/hotel.service';
 
-export const getDetails = createAsyncThunk(
-  "detail/getDetails",
-  async ({ id }) => {
-    const response = await http.post(
-      "properties/v2/detail",
-      {
-        currency: "IDR",
-        locale: "id_ID",
-        propertyId: id,
+export const getDetails = createAsyncThunk('detail/getDetails', async ({ id }) => {
+  const response = await http.post(
+    'properties/v2/detail',
+    {
+      currency: 'IDR',
+      locale: 'id_ID',
+      propertyId: id,
+    },
+    {
+      headers: {
+        'content-type': 'application/json',
       },
-      {
-        headers: {
-          "content-type": "application/json",
-        },
-      }
-    );
-    return response.data?.data?.propertyInfo;
-  }
-);
+    }
+  );
+  return response.data?.data?.propertyInfo;
+});
 
-export const getDescription = createAsyncThunk(
-  "detail/getDescription",
-  async ({ id }) => {
-    const response = await http.post(
-      "properties/v2/get-content",
-      {
-        currency: "IDR",
-        locale: "id_ID",
-        propertyId: id,
+export const getDescription = createAsyncThunk('detail/getDescription', async ({ id }) => {
+  const response = await http.post(
+    'properties/v2/get-content',
+    {
+      currency: 'IDR',
+      locale: 'id_ID',
+      propertyId: id,
+    },
+    {
+      headers: {
+        'content-type': 'application/json',
       },
-      {
-        headers: {
-          "content-type": "application/json",
-        },
-      }
-    );
-    return response.data?.data?.propertyInfo?.propertyContentSectionGroups
-      ?.aboutThisProperty?.sections[0]?.bodySubSections[0]?.elements[0]
-      ?.items[0]?.content.text;
-  }
-);
+    }
+  );
+  return response.data?.data?.propertyInfo?.propertyContentSectionGroups?.aboutThisProperty
+    ?.sections[0]?.bodySubSections[0]?.elements[0]?.items[0]?.content.text;
+});
 
 const initialState = {
   details: [],
@@ -50,7 +43,7 @@ const initialState = {
 };
 
 const detailSlice = createSlice({
-  name: "detail",
+  name: 'detail',
   initialState,
   reducers: {
     resetDetails: (state) => {

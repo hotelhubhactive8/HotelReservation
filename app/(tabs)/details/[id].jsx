@@ -128,7 +128,6 @@ const HotelDetail = () => {
                 router.push('login');
               }}
             >
-              <MaterialCommunityIcons name="book-clock" color={COLOR.white} size={20} />
               <Text style={styles.bookingText}>Booking Now</Text>
             </TouchableOpacity>
           </View>
@@ -174,6 +173,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: COLOR.white,
     fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 export default HotelDetail;

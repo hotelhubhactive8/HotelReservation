@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import http from '../../services/http';
+import http from '../../services/hotel.service';
 
 const initialState = {
   home: [],
@@ -53,7 +53,6 @@ export const getHome = createAsyncThunk('home/getHome', async () => {
     }
   );
 
-  // console.log(response.data.data.propertySearch.properties);
   return response.data.data.propertySearch.properties;
 });
 

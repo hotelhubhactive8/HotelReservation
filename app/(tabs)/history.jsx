@@ -12,8 +12,6 @@ const history = () => {
   const booking = useSelector((state) => state.booking.booking);
   const dispatch = useDispatch();
 
-  console.log(booking.map((item) => item.checkIn));
-
   return isLoggedIn ? (
     <View style={styles.container}>
       <View style={styles.profileContainer}>
@@ -34,7 +32,7 @@ const history = () => {
               <Text>Bookings</Text>
             </View>
             <View>
-              <Text style={{ color: '#32a852', fontWeight: 'bold', textAlign: 'center' }}>
+              <Text style={{ color: 'black', fontWeight: 'bold', textAlign: 'center' }}>
                 {booking.length}
               </Text>
             </View>
@@ -44,7 +42,7 @@ const history = () => {
               <Text>Favorites</Text>
             </View>
             <View>
-              <Text style={{ color: '#32a852', fontWeight: 'bold', textAlign: 'center' }}>
+              <Text style={{ color: 'black', fontWeight: 'bold', textAlign: 'center' }}>
                 {favorite.length}
               </Text>
             </View>

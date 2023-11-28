@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import COLOR from '../../constants/Colors';
 import ICON from '../../constants/Icons';
-import FormEdit from '../../components/Settings/FormEdit';
+import FormEdit from '../../components/Profile/FormEdit';
 import NotLogin from '../../components/Login/NotLogin';
 
 const Profile = () => {

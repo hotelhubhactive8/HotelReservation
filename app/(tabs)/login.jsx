@@ -25,15 +25,11 @@ const Login = () => {
 
   const handleLogin = () => {
     setError('');
-    console.log('ini state', email.email, password.password);
-    console.log('ini redux', auth.email, auth.password);
     if (email.email === auth.email && password.password === auth.password) {
-      console.log('masuk');
       dispatch(login());
       router.back();
       return;
     }
-    console.log('gagal');
     setError('Email atau password anda salah.');
   };
 

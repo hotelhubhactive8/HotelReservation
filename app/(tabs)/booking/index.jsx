@@ -69,7 +69,6 @@ const Booking = () => {
               style={style.textInput}
               onChangeText={(checkIn) => {
                 setCheckIn(checkIn);
-                console.log(checkIn);
               }}
               value={checkIn}
             />
@@ -82,7 +81,6 @@ const Booking = () => {
               style={style.textInput}
               onChangeText={(checkOut) => {
                 setCheckOut(checkOut);
-                console.log(checkOut);
               }}
               value={checkOut}
             />

@@ -97,7 +97,6 @@ const Saved = () => {
                     <TouchableOpacity
                       onPress={() => {
                         dispatch(removeFromFavorites(item.id));
-                        console.log('ini hapus', item.id);
                       }}
                     >
                       <MaterialCommunityIcons name="heart" color="red" size={20} />

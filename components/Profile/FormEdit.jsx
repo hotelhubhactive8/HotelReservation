@@ -80,7 +80,6 @@ const FormEdit = () => {
       })
     );
     setOpenModal(!openModal);
-    console.log('updated');
   };
 
   return (
@@ -167,9 +166,7 @@ const FormEdit = () => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={{ fontSize: 20, marginBottom: 20 }}>
-              Are you sure you want to log out?
-            </Text>
+            <Text style={{ fontSize: 20, marginBottom: 20 }}>Do you want to logout ?</Text>
             <TouchableOpacity
               style={styles.modalTouch}
               onPress={() => {
