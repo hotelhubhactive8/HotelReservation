@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import ICON from '../../constants/Icons';
+import IconHacker from '../../assets/images/hacker.png';
 import COLOR from '../../constants/Colors';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearBooking } from '../../redux/slice/bookingSlice';
@@ -17,7 +17,7 @@ const history = () => {
       <View style={styles.profileContainer}>
         <View style={styles.profileInfo}>
           <View>
-            <Image source={ICON.hacker} style={{ height: 50, width: 50, borderRadius: 10 }} />
+            <Image source={IconHacker} style={{ height: 50, width: 50, borderRadius: 10 }} />
           </View>
           <View style={{ marginTop: 10 }}>
             <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>
@@ -104,11 +104,11 @@ const history = () => {
                   >
                     <View>
                       <Text>Check In</Text>
-                      <Text>{booking.map((item) => item.checkIn)}</Text>
+                      <Text>{item.checkIn}</Text>
                     </View>
                     <View>
                       <Text>Check Out</Text>
-                      <Text>{booking.map((item) => item.checkOut)}</Text>
+                      <Text>{item.checkOut}</Text>
                     </View>
                   </View>
                 </View>

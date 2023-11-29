@@ -135,30 +135,9 @@ const Booking = () => {
             </View>
           </View>
           <View style={styles.container2}>
-            <Text style={styles.text}>
-              <MaterialCommunityIcons name="calendar-start" size={19} />
-              <Text>Check In</Text>
-            </Text>
-            <TouchableOpacity
-              style={styles.btnDate}
-              onPress={() => setOpenModalCheckIn(!openModalCheckIn)}
-            >
-              <Text style={[styles.text, styles.color]}>{checkIn}</Text>
-            </TouchableOpacity>
-            <Text style={styles.text}>
-              <MaterialCommunityIcons name="calendar-end" size={19} />
-              <Text>Check Out</Text>
-            </Text>
-            <TouchableOpacity
-              style={styles.btnDate}
-              onPress={() => setOpenModalCheckOut(!openModalCheckOut)}
-            >
-              <Text style={[styles.text, styles.color]}>{checkOut}</Text>
-            </TouchableOpacity>
             <View style={styles.contact}>
-              <Text style={[styles.text]}>
-                <MaterialCommunityIcons name="contacts" size={19} />
-                Contact Information
+              <Text style={{ ...styles.text, fontSize: 24, color: 'black' }}>
+                Detail Information
               </Text>
               <View style={{ gap: 5 }}>
                 <Text style={[styles.text]}>Name</Text>
@@ -176,6 +155,24 @@ const Booking = () => {
                   onChangeText={(inputTelp) => setContactTelp(inputTelp)}
                 />
               </View>
+              <Text style={styles.text}>
+                <Text>Check In</Text>
+              </Text>
+              <TouchableOpacity
+                style={styles.btnDate}
+                onPress={() => setOpenModalCheckIn(!openModalCheckIn)}
+              >
+                <Text style={{ ...styles.color, fontSize: 18 }}>{checkIn}</Text>
+              </TouchableOpacity>
+              <Text style={styles.text}>
+                <Text>Check Out</Text>
+              </Text>
+              <TouchableOpacity
+                style={styles.btnDate}
+                onPress={() => setOpenModalCheckOut(!openModalCheckOut)}
+              >
+                <Text style={{ ...styles.color, fontSize: 18 }}>{checkOut}</Text>
+              </TouchableOpacity>
             </View>
             <TouchableOpacity
               onPress={() => {
@@ -277,6 +274,8 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 18,
+    fontWeight: 'bold',
+    color: COLOR.primary,
   },
 
   input: {

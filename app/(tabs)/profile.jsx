@@ -4,7 +4,7 @@ import { Stack } from 'expo-router';
 import { useSelector } from 'react-redux';
 
 import COLOR from '../../constants/Colors';
-import ICON from '../../constants/Icons';
+import IconHacker from '../..//assets/images/hacker.png';
 import FormEdit from '../../components/Profile/FormEdit';
 import NotLogin from '../../components/Login/NotLogin';
 
@@ -31,7 +31,7 @@ const Profile = () => {
       <SafeAreaView style={styles.container}>
         {renderHeader()}
         <View style={styles.icon}>
-          <Image source={ICON.hacker} style={{ width: '100%', height: '100%' }} />
+          <Image source={IconHacker} style={{ width: '100%', height: '100%' }} />
         </View>
         <View style={styles.formContainer}>
           <FormEdit />
