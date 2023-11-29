@@ -43,8 +43,14 @@ export const getHome = createAsyncThunk('home/getHome', async () => {
         },
       ],
       resultsStartingIndex: 0,
-      resultsSize: 15,
+      resultsSize: 20,
       sort: 'RECOMMENDED',
+      filters: {
+        price: {
+          max: 150,
+          min: 100,
+        },
+      },
     },
     {
       headers: {

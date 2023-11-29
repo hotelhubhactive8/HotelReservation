@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   booking: [],
 };
 
 const bookingSlice = createSlice({
-  name: "booking",
+  name: 'booking',
   initialState,
   reducers: {
     addBooking: (state, action) => {
