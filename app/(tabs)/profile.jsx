@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: COLOR.white,
     gap: 20,
-    height: Dimensions.get('screen').height - 140,
+    minHeight: Dimensions.get('screen').height,
   },
 
   icon: {
